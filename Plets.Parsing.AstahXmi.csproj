@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk" TargetFramework=".NETStandard,Version=v2.1" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>  
+    <AssemblyName>Plets.Data.Xmi</AssemblyName>  
+    <OutputPath>../../build</OutputPath>  
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- TODO: remove graph from parsing, because it needs to be in model builder -->
+    <ProjectReference Include="..\Plets.Modeling.Graph\Plets.Modeling.Graph.csproj">
+    </ProjectReference>
+    <ProjectReference Include="..\Plets.Core.Uml\Plets.Core.Uml.csproj">
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="./Source/*.cs" />
+  </ItemGroup>
+  <Target Name="Build">  
+    <Csc Sources="@(Compile)" References="@(Reference)" OutputAssembly="$(OutputPath)/$(AssemblyName).dll" />
+  </Target>  
+</Project>
